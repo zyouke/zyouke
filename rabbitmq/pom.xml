@@ -5,10 +5,9 @@
     <artifactId>rabbitmq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <parent>
-        <groupId>com.zyouke.parent</groupId>
-        <artifactId>parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent/pom.xml</relativePath>
+        <groupId>com.zyouke.project</groupId>
+        <artifactId>zyouke</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <dependencies>
         <dependency>
