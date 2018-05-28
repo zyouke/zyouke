@@ -1,0 +1,11 @@
+[{
+	"title" : "后台首页",
+	"icon" : "icon-computer",
+	"href" : "/html/page/main.html",
+	"spread" : false
+},{
+	"title" : "区域列表",
+	"icon" : "icon-text",
+	"href" : "/html/page/area.html",
+	"spread" : false
+}]

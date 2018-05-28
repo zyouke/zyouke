@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<depths xmlns="http://103.82.53.221:9000/home/document/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://103.82.53.221:9000/home/document/schema http://103.82.53.221:9000/home/document/schema/crawler_css.xsd">
+	<depth webpageParentCssSelector="#cityTable tr">
+		<webpage name="provinceName" index="0" cssSelector="td" />
+		<webpage name="cityName" cssSelector="a" />
+	</depth>
+	<depth>
+		<webpage cssSelector="#companylist a" />
+	</depth>
+	<depth nextPageCssSelector="#yw1 li.next a" lastPageCssSelector="#yw1 li.last a">
+		<webpage name="companyName" cssSelector="ul.companylist li p.listleft a" />
+	</depth>
+	<depth>
+		<webpage name="contactPerson" index="0" cssSelector="#company_info dl dd" />
+		<webpage name="companyAddr" index="3" cssSelector="#company_info dl dd" />
+	</depth>
+</depths>

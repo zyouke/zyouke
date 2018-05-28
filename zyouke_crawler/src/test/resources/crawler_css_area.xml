@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<depths xmlns="http://103.82.53.221:9000/home/document/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://103.82.53.221:9000/home/document/schema http://103.82.53.221:9000/home/document/schema/crawler_css.xsd">
+	<depth>
+		<webpage name="value" cssSelector="tr .provincetr a" />
+	</depth>
+	<depth webpageParentCssSelector="tr .citytr">
+		<webpage name="code" index="0" cssSelector="a" />
+		<webpage name="value" index="1" isRequest="false" cssSelector="a" />
+	</depth>
+	<depth webpageParentCssSelector="tr .countytr">
+		<webpage name="code" index="0" cssSelector="a" />
+		<webpage name="value" index="1" isRequest="false" cssSelector="a" />
+	</depth>
+	<depth webpageParentCssSelector="tr .towntr">
+		<webpage name="code" index="0" cssSelector="a" />
+		<webpage name="value" index="1" isRequest="false" cssSelector="a" />
+	</depth>
+	<depth webpageParentCssSelector="tr .villagetr">
+		<webpage name="code" index="0" cssSelector="td" />
+		<webpage name="value" index="2" cssSelector="td" />
+	</depth>
+</depths>
