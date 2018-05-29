@@ -15,10 +15,9 @@ public class SimpleCanalTest {
 
     private static final Logger LOGGER  = LoggerFactory.getLogger(SimpleCanalTest.class);
 
-    private static final int    CANAL_BATCH_SIZE = 1000;
+    private static final int    CANAL_BATCH_SIZE = 1;
 
     public static void main(String args[]) {
-        String confName = "example";
         String canalUsername = "";
         String canalPassword = "";
         // 每次数据的偏移量
@@ -33,7 +32,7 @@ public class SimpleCanalTest {
         while (true) {
             try {
                 connector.connect();
-                connector.subscribe("zyouke\\\\..*");
+                //connector.subscribe(".*\\\\..*");
                 connector.rollback();
                 // 内层死循环:
                 // 按频率实时监听数据变化，
@@ -46,11 +45,13 @@ public class SimpleCanalTest {
                     int size = message.getEntries().size();
                     // 偏移量不等于-1 或者 获取的数据条数不为0 时，认为拿到消息，并处理
                     if (batchId == -1 || size == 0) {
+                        System.out.println("----------->获取数据为0条");
                         // 200ms 拉一次变动数据
-                        Thread.sleep(2000);
+                        Thread.sleep(10000);
                         connector.ack(batchId); // 提交确认
                     } else {
-                        System.out.println("----------->" + message.getEntries());
+                        System.out.println("-----------监听到数据变化---------------");
+                        System.out.println("数据----------->" + message.getEntries());
                         connector.ack(batchId); // 提交确认
                     }
 
