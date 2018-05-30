@@ -15,14 +15,14 @@ public class SimpleCanalTest {
 
     private static final Logger LOGGER  = LoggerFactory.getLogger(SimpleCanalTest.class);
 
-    private static final int    CANAL_BATCH_SIZE = 1;
+    private static final int    CANAL_BATCH_SIZE = 1000;
 
     public static void main(String args[]) {
         String canalUsername = "";
         String canalPassword = "";
         // 每次数据的偏移量
         long batchId = 0;
-        String destination = "example";
+        String destination = "zyouke";
         String ip = "122.114.90.68";
         // 创建链接
         CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress(ip, 11111),
@@ -32,7 +32,7 @@ public class SimpleCanalTest {
         while (true) {
             try {
                 connector.connect();
-                //connector.subscribe(".*\\\\..*");
+                connector.subscribe("zyouke\\..*");
                 connector.rollback();
                 // 内层死循环:
                 // 按频率实时监听数据变化，
@@ -47,7 +47,7 @@ public class SimpleCanalTest {
                     if (batchId == -1 || size == 0) {
                         System.out.println("----------->获取数据为0条");
                         // 200ms 拉一次变动数据
-                        Thread.sleep(10000);
+                        Thread.sleep(100);
                         connector.ack(batchId); // 提交确认
                     } else {
                         System.out.println("-----------监听到数据变化---------------");
