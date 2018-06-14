@@ -47,7 +47,7 @@ public class SimpleCanalTest {
                     if (batchId == -1 || size == 0) {
                         System.out.println("----------->获取数据为0条");
                         // 200ms 拉一次变动数据
-                        Thread.sleep(100);
+                        Thread.sleep(3000);
                         connector.ack(batchId); // 提交确认
                     } else {
                         System.out.println("-----------监听到数据变化---------------");

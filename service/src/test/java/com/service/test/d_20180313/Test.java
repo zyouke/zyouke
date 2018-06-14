@@ -8,8 +8,8 @@ public class Test {
 
     @org.junit.Test
     public void test1(){
-        SynchronizedDemo sd = new SynchronizedDemo();
-        String str = new String();
+        final SynchronizedDemo sd = new SynchronizedDemo();
+        final String str = new String();
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
