@@ -9,27 +9,19 @@ import java.util.concurrent.*;
  * @date 2018年1月15日 下午1:34:11
  */
 public class CustomThreadPool {
-    
-    private int corePoolSize; //线程池维护线程的最少数量 
-    private int maxPoolSize; //线程池维护线程的最大数量
-    // 同時運行的線程數量
-    private BlockingQueue<Runnable> workThreads=new LinkedBlockingDeque<Runnable>(maxPoolSize);//当前工作线程
-    // 任务线程队列
-    private BlockingQueue<Runnable> tasks=new LinkedBlockingDeque<>(10);
-    public CustomThreadPool() {
-        new CustomThreadPool(Runtime.getRuntime().availableProcessors(),Runtime.getRuntime().availableProcessors()*2,300L);
-    }
+    // 初始化线程数量
+    private int corePoolSize;
 
-    public CustomThreadPool(int corePoolSize, int maxiPoolSize, long keepAliveTime) {
-        super();
-        this.corePoolSize = corePoolSize;
-        this.maxPoolSize = maxiPoolSize;
-    }
+    // 存放待执行的线程
+    private LinkedBlockingQueue workQueue;
 
-    public void execute(Runnable runnable){
-        if (workThreads.size()){
 
-        }
+
+
+
+    // 执行线程
+    public void execute(Runnable command){
+
     }
     
 
