@@ -1,4 +1,4 @@
-package com.zyouke.jdk.thread;
+package com.zyouke.thread;
 
 /**
  * ExceptionThread.java

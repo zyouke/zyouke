@@ -186,7 +186,7 @@ public class Test {
     @org.junit.Test
     public void  test13(){
         try {
-            Field[] fields = Class.forName("com.zyouke.annotation.Apple").getDeclaredFields();
+            Field[] fields = Class.forName("annotation.Apple").getDeclaredFields();
             for (Field field : fields){
                 Annotation[] annotations = field.getAnnotations();
                 for (Annotation annotation : annotations){

@@ -1,4 +1,4 @@
-package com.zyouke.jdk.spi;
+package com.zyouke.spi;
 
 /**
  * IHelloSpi.java

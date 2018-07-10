@@ -1,6 +1,6 @@
-package com.zyouke.jdk.spi.impl;
+package com.zyouke.spi.impl;
 
-import com.zyouke.jdk.spi.IHelloSpi;
+import com.zyouke.spi.IHelloSpi;
 
 /**
  * HelloSpiOneImpl.java
