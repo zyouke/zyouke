@@ -13,5 +13,5 @@
     <context:annotation-config/>
     <!-- 配置注解自动扫描的包 -->
     <context:component-scan base-package="com.zyouke"/>
-    <import resource="dubbo-consumer.xml"/>
+    <!--<import resource="dubbo-consumer.xml"/>-->
 </beans>

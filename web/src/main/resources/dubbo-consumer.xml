@@ -12,6 +12,4 @@
 	<!-- 注册中心地址 -->
 	<dubbo:registry protocol="zookeeper" address="${zookeeper_addr}" />
 	
-	<!-- 用户服务接口 -->
-	<dubbo:reference interface="com.zyouke.service.IAreaService" id="areaService" check="false" />
 </beans>
