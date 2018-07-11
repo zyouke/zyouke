@@ -16,25 +16,18 @@ import java.util.concurrent.CountDownLatch;
  */
 public class ThreadUtil {
 
-    private ThreadUtil(){}
+    private ThreadUtil(){
+    }
+
     /**
-     * @Instructions: 模拟并发
-     * @param threadNum 模拟并发数
-     * @param runnable 当前执行的线程
-     * @Author: zyouke
-     * @Date: 2017/11/16 0016 22:41
+     * 线程休眠
+     * @param millis
      */
-    public static void concurrentRequest(int threadNum,CountDownLatch countDownLatch,Runnable runnable){
-        for (int i = 0; i < threadNum; i++) {
-            Thread thread = new Thread(runnable);
-            thread.start();
-            countDownLatch.countDown();
-        }
+    public static void sleep(long millis){
         try {
-            Thread.sleep(1000*60);
+            Thread.sleep(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("并发模拟请求执行完毕..............");
     }
 }
