@@ -1,4 +1,4 @@
-package com.zyouke.main;
+package test.com.zyouke.netty;
 
 
 import io.netty.channel.ChannelInitializer;

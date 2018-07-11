@@ -1,4 +1,4 @@
-package com.zyouke.BIO;
+package com.zyouke.bio;
 
 import java.io.BufferedReader;
 import java.io.IOException;

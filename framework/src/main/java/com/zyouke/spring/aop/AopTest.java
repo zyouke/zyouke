@@ -1,4 +1,4 @@
-package com.zyouke.aop;
+package com.zyouke.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -11,7 +11,7 @@ public class AopTest {
 
     private ThreadLocal<Long> threadLocal = new ThreadLocal<>();
     // 定义一个切点,主要是拦截方法
-    @Pointcut("execution(* com.zyouke.aop.*.*(..))")
+    @Pointcut("execution(* com.zyouke.spring.aop.*.*(..))")
     public void pointcut(){}
 
     // 前置通知
