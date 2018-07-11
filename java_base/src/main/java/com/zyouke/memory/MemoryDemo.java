@@ -1,4 +1,4 @@
-package com.zyouke.jdk.memory;
+package com.zyouke.memory;
 
 import org.springframework.stereotype.Component;
 

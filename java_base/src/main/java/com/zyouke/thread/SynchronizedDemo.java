@@ -1,8 +1,4 @@
-package com.zyouke.jdk.thread;
-
-import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+package com.zyouke.thread;
 
 /**
  * SynchronizedDemo.java

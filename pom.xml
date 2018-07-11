@@ -13,12 +13,12 @@
         <Hibernate.version>4.3.5.Final</Hibernate.version>
     </properties>
     <modules>
+        <module>canal</module>
         <module>common</module>
         <module>crawler</module>
         <module>web</module>
         <module>service</module>
         <module>rabbitmq</module>
-        <module>framework</module>
     </modules>
     <dependencies>
         <!-- spring 依赖包开始 -->

@@ -1,4 +1,4 @@
-package com.zyouke.jdk.threadPool;
+package com.zyouke.thread.threadPool;
 
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
