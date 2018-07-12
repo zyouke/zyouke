@@ -1,18 +1,11 @@
 package com.zyouke.service;
 
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
+import com.zyouke.bean.Area;
 import com.zyouke.dao.AreaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zyouke.bean.Area;
-import com.zyouke.es.Es;
-import com.zyouke.es.EsConnection;
-import com.zyouke.es.EsConnectionPool;
-import com.zyouke.es.EsConnectionPoolFactory;
+import java.util.List;
 
 /**
  * 区域服务类
@@ -51,7 +44,7 @@ public class AreaServiceImpl implements IAreaService{
      * @Title: addAreaToEs
      * @author 周俊  void
      */
-    public void addAreaToEs(){
+    public void addAreaToEs(){/*
 	ExecutorService executorService = Executors.newFixedThreadPool(15);
 	final EsConnectionPool esConnectionPool = EsConnectionPoolFactory.getInstance(15);
 	// 删除索引
@@ -76,7 +69,7 @@ public class AreaServiceImpl implements IAreaService{
 	    });
 	}
 	executorService.shutdown();
-	while (!executorService.isTerminated());
+	while (!executorService.isTerminated());*/
     }
     
 }

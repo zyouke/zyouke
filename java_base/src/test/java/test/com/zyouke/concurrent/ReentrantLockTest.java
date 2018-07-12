@@ -1,5 +1,8 @@
 package test.com.zyouke.concurrent;
 
+import com.zyouke.threadPool.CustomThreadPool;
+import com.zyouke.utils.RandomUtil;
+import com.zyouke.utils.ThreadUtil;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -10,22 +13,26 @@ import java.util.concurrent.locks.ReentrantLock;
  * ReentrantLock 测试
  */
 public class ReentrantLockTest {
-    private static Lock lock = new ReentrantLock();
-    public static void createOrder(String userCode){
+    private  Lock lock = new ReentrantLock(true);
+    public  void createOrder(String userCode){
         // 加锁
         lock.lock();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         System.out.println("用户"+userCode+"正在创建的订单号:"+ UUID.randomUUID().toString());
         lock.unlock();
     }
 
     @Test
     public void createOrderTest(){
-
+        CustomThreadPool customThreadPool = new CustomThreadPool();
+        for (int i = 0; i < 100; i++) {
+            customThreadPool.execute(new Runnable() {
+                @Override
+                public void run() {
+                    createOrder(RandomUtil.getRandomString());
+                }
+            });
+        }
+        while (!customThreadPool.isTerminated()){}
     }
 
 }

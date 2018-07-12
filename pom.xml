@@ -17,7 +17,6 @@
         <module>crawler</module>
         <module>web</module>
         <module>service</module>
-        <module>rabbitmq</module>
         <module>java_base</module>
         <module>framework</module>
     </modules>

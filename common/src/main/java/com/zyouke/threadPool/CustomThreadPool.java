@@ -1,5 +1,6 @@
 package com.zyouke.threadPool;
 
+import javax.xml.transform.Source;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -56,6 +57,9 @@ public class CustomThreadPool {
         // 获取当前工作线程的状态
         boolean isRunning = false;
         for (int i = 0; i < workers.length; i++) {
+            if (workers[i] == null){
+                break;
+            }
             isRunning = workers[i].isRunning;
             if (isRunning){
                 break;
