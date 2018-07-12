@@ -18,7 +18,7 @@ public class CustomLockTest {
             customThreadPool.execute(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println(customLock.compareAndSetState(1,2,new Object()));
+                    System.out.println(customLock.compareAndSetState(0,1,new Object()));
                 }
             });
         }
