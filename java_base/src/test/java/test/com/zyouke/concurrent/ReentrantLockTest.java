@@ -22,7 +22,7 @@ public class ReentrantLockTest {
     }
 
     @Test
-    public void createOrderTest(){
+    public void createOrderTest1(){
         CustomThreadPool customThreadPool = new CustomThreadPool();
         for (int i = 0; i < 100; i++) {
             customThreadPool.execute(new Runnable() {
@@ -32,6 +32,18 @@ public class ReentrantLockTest {
                 }
             });
         }
+        while (!customThreadPool.isTerminated()){}
+    }
+    @Test
+    public void createOrderTest2(){
+        CustomThreadPool customThreadPool = new CustomThreadPool();
+        customThreadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                createOrder(RandomUtil.getRandomString());
+            }
+        });
+
         while (!customThreadPool.isTerminated()){}
     }
 

@@ -26,6 +26,7 @@ public class CustomLock extends AbstractQueuedSynchronizer implements Lock, Seri
     @Override
     public boolean tryRelease(int arg) {
         if (arg > 0){
+            setState(0);
             return true;
         }
         return false;

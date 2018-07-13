@@ -30,4 +30,12 @@ public class ThreadUtil {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 获取当前线程的名称
+     * @return
+     */
+    public static String getThreadName(){
+        return Thread.currentThread().getName();
+    }
 }
