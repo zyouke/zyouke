@@ -2,8 +2,9 @@ package com.zyouke.data_structure;
 
 /**
  * @Author: zhoujun
+ * 单向
  */
-public class LinkedList {
+public class LinkedOneWay {
     // 位置
     private int index;
     // 第一个节点
