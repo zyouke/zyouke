@@ -32,7 +32,9 @@ public class LinkedListTest {
 
     @Test
     public void pollTest(){
-        linkedList.poll();
+        for (int i = 0; i < 5; i++) {
+            linkedList.poll();
+        }
     }
 
     @After
