@@ -80,35 +80,6 @@ public class Test {
 
     @org.junit.Test
     public void test3() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        AreaDao areaDao = (AreaDao) applicationContext.getBean("areaDao");
-        List<String> codes = areaDao.queryAreaCodes();
-        try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:/work_doc/user.txt"));
-            StringBuffer buffer = new StringBuffer();
-<<<<<<< HEAD
-            for (int i = 0; i < 3500000; i++) {
-=======
-            for (int i = 0; i < 3000000; i++) {
->>>>>>> d169883f238fff903f4cd99a6e3bf7ac5c1a86e7
-                if (i % 25000 == 0){
-                    if (buffer.length() > 0){
-                        buffer.append("('" + RandomStringUtils.randomAlphanumeric(10) + "'," + RandomUtil.getRandomNumber(10, 100) + ",'" + codes.get(RandomUtil.getRandomNumber(0, codes.size())) + "');");
-                        writeSql(buffer.toString(),null,bufferedWriter);
-                        buffer.delete(0,buffer.length());
-                    }
-                    buffer.append("INSERT INTO T_USER (USER_NAME,USER_AGR,AREA_CODE) VALUES ");
-                }else {
-                    buffer.append("('" + RandomStringUtils.randomAlphanumeric(10) + "'," + RandomUtil.getRandomNumber(10, 100) + ",'" + codes.get(RandomUtil.getRandomNumber(0, codes.size())) + "'),");
-                }
-                if (i % 1024 == 0){
-                    System.out.println("==================================");
-                }
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

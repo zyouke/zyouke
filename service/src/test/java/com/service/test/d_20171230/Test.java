@@ -6,7 +6,7 @@ import com.zyouke.bean.Area;
 import com.zyouke.bean.Goods;
 import com.zyouke.bean.Order;
 import com.zyouke.bean.User;
-import com.zyouke.dubbo.spi.DubboSPIDemo;
+import com.zyouke.spi.DubboSPIDemo;
 import com.zyouke.es.Es;
 import com.zyouke.es.EsConnectionPool;
 import com.zyouke.es.EsConnectionPoolFactory;

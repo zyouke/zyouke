@@ -1,26 +1,27 @@
-package com.zyouke.dubbo.spi;
+package test.com.zyouke.dubbo.spi;
 
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 import com.alibaba.dubbo.registry.RegistryFactory;
+import org.junit.Test;
 
 /**
- * DubboSPIDemo.java
- * duboo spi 机制的实现解析
- * @author zyouke
- * @create 2017/11/27 10:47
+ * @Author: zhoujun
+ * dubbo spi 机制的测试
  */
-public class DubboSPIDemo {
-
+public class DubboSPITest {
     /**
-     * @Instructions: 获取Dubbo spi机制产生的class 类
+     * @Instructions: 通过Dubbo spi机制获取的class 类
      * @Author: zyouke
      * @Date: 2017/11/27 10:54
      */
-    public static void getDubboSpiClass(){
+    @Test
+    public void getClassByDubboSpiTest() {
         ExtensionLoader<RegistryFactory> extensionLoader = ExtensionLoader.getExtensionLoader(RegistryFactory.class);
         RegistryFactory zookeeper = extensionLoader.getExtension("zookeeper");
         RegistryFactory redis = extensionLoader.getExtension("redis");
-        System.out.println("zookeeper : " + zookeeper.hashCode());
-        System.out.println("redis : " + redis.hashCode());
+        System.out.println("zookeeper_name : " + zookeeper.getClass().getName());
+        System.out.println("redis_name : " + redis.getClass().getName());
     }
+
+
 }
