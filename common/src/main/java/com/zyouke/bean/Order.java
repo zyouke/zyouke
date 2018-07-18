@@ -1,5 +1,7 @@
 package com.zyouke.bean;
 
+import org.apache.commons.lang.time.DateFormatUtils;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -45,5 +47,15 @@ public class Order implements Serializable{
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", money=" + money +
+                ", createTime=" + DateFormatUtils.format(createTime,"yyyyy-MM-dd HH:mm:ss:ms") +
+                '}';
     }
 }

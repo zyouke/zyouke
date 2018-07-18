@@ -19,6 +19,7 @@ public class OrderServiceImpl implements IOrderService{
     private BaseDao<Order> baseDao;
     @Resource
     private IGoodsService goodsService;
+    @Override
     public void addOrder(Order order){
         baseDao.add(order);
         //goodsService.updateGoodsNum(1);
