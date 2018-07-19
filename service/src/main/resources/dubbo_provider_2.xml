@@ -14,5 +14,5 @@
 	<dubbo:protocol name="dubbo" port="${dubbo_port_2}" />
 	<!-- 用户服务接口 -->
 	<dubbo:service interface="com.zyouke.service.IAreaService" ref="areaService" />
-    <dubbo:monitor protocol="zookeeper" address="${zookeeper_addr}"/>
+    <!--<dubbo:monitor protocol="zookeeper" address="${zookeeper_addr}"/>-->
 </beans>  

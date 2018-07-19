@@ -13,12 +13,6 @@ import java.util.List;
  */
 public interface IAreaService {
 
-	/**
-     * 将区域数据添加到es中
-     * @Title: addAreaToEs
-     * @author 周俊  void
-     */
-	void addAreaToEs();
 
     /**
      * @Instructions:  查询列表 根据起始行数 和查询总行数
