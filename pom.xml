@@ -234,7 +234,6 @@
                     <compilerArguments>
                         <bootclasspath>${env.JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
                     </compilerArguments>
-                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
