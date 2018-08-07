@@ -231,6 +231,7 @@
                     <source>1.7</source>
                     <target>1.7</target>
                     <encoding>utf8</encoding>
+                    <skip>true</skip>
                     <compilerArguments>
                         <bootclasspath>${env.JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
                     </compilerArguments>
