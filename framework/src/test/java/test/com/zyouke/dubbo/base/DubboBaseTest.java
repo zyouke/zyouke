@@ -2,6 +2,7 @@ package test.com.zyouke.dubbo.base;
 
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 import com.alibaba.dubbo.registry.RegistryFactory;
+import com.zyouke.dubbo.base.DynamicCreateObject;
 import org.junit.Test;
 
 /**
@@ -24,5 +25,11 @@ public class DubboBaseTest {
         RegistryFactory redis = extensionLoader.getExtension("redis");
         System.out.println("zookeeperClassName : " + zookeeper.getClass().getName());
         System.out.println("redisClassName : " + redis.getClass().getName());
+    }
+
+    @Test
+    public void createSimpleClassTest(){
+        DynamicCreateObject createObject = new DynamicCreateObject();
+        createObject.createSimpleClass("Student");
     }
 }
