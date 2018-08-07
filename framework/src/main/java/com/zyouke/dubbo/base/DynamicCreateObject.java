@@ -17,10 +17,8 @@ public class DynamicCreateObject {
         try {
             Class clazz = ctClass.toClass();
             System.out.println("--------------" + clazz.getName());
-            ctClass.writeFile("E://temp//javassist");
-        } catch (CannotCompileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            ctClass.writeFile(".//files//dubbo");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
