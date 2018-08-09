@@ -3,6 +3,7 @@ package test.com.zyouke.dubbo.base;
 import com.alibaba.dubbo.common.compiler.Compiler;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 import com.alibaba.dubbo.registry.RegistryFactory;
+import com.alibaba.dubbo.rpc.Protocol;
 import com.zyouke.dubbo.base.DynamicCreateObject;
 import org.junit.Test;
 
@@ -26,6 +27,12 @@ public class DubboBaseTest {
         RegistryFactory redis = extensionLoader.getExtension("redis");
         System.out.println("zookeeperClassName : " + zookeeper.getClass().getName());
         System.out.println("redisClassName : " + redis.getClass().getName());
+        Protocol protocolAdaptiveExtension = ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();
+    }
+    @Test
+    public void dubboProtocolTest() {
+        ExtensionLoader<Protocol> extensionLoader = ExtensionLoader.getExtensionLoader(Protocol.class);
+        Protocol protocolAdaptiveExtension = extensionLoader.getAdaptiveExtension();
     }
 
     @Test

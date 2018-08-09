@@ -1,10 +1,10 @@
 package com.zyouke.spring.listener;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.TimeUnit;
 
 /**
  * MyApplicationListener.java
@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class MyApplicationListener implements ApplicationListener {
+    private static final Logger logger = Logger.getLogger(MyApplicationListener.class);
     /**
      * @Instructions: 实现 onApplicationEvent方法,虽然像是一个普通的方法但在spring初始化的时候调用
      * @Author: zyouke
@@ -21,26 +22,6 @@ public class MyApplicationListener implements ApplicationListener {
      */
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
-        System.out.println("spring初始化完成,3秒后执行业务......");
-        long s = System.currentTimeMillis();
-        int count = 3;
-        while (System.currentTimeMillis() - s < 3100){
-            try {
-                TimeUnit.SECONDS.sleep(1);
-                System.out.println("-----------" + count-- + "--------------");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-    }
-    /**
-     * @Instructions: 测试在注册bean的时候是否调用 结果是不调用的
-     * @Author: zyouke
-     * @Date: 2017/12/11 10:21
-     */
-    public void test(){
-        System.out.println("测试在注册bean的时候是否调用...");
+        logger.info("spring初始化完成,等待执行业务......");
     }
 }
