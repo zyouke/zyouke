@@ -1,11 +1,17 @@
 package test.com.zyouke.dubbo.base;
 
+import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.common.compiler.Compiler;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 import com.alibaba.dubbo.registry.RegistryFactory;
 import com.alibaba.dubbo.rpc.Protocol;
+import com.alibaba.dubbo.rpc.ProxyFactory;
 import com.zyouke.dubbo.base.DynamicCreateObject;
+import com.zyouke.dubbo.base.spi.Animal;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: zhoujun
@@ -20,19 +26,36 @@ public class DubboBaseTest {
      * @Date: 2017/11/27 10:54
      */
     @Test
-    public void dubboRegistryFactoryTest() {
+    public void dubboSPITest() {
         ExtensionLoader<RegistryFactory> extensionLoader = ExtensionLoader.getExtensionLoader(RegistryFactory.class);
-        RegistryFactory registryFactory = extensionLoader.getAdaptiveExtension();
         RegistryFactory zookeeper = extensionLoader.getExtension("zookeeper");
         RegistryFactory redis = extensionLoader.getExtension("redis");
         System.out.println("zookeeperClassName : " + zookeeper.getClass().getName());
         System.out.println("redisClassName : " + redis.getClass().getName());
-        Protocol protocolAdaptiveExtension = ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------");
+        ExtensionLoader<Animal> animalExtensionLoader = ExtensionLoader.getExtensionLoader(Animal.class);
+        Animal tiger = animalExtensionLoader.getExtension("tiger");
+        tiger.eat();
+        tiger.sleep();
+        System.out.println("-------------------------------------------------------------");
+        Animal fish = animalExtensionLoader.getExtension("fish");
+        fish.eat();
+        fish.sleep();
     }
+
     @Test
-    public void dubboProtocolTest() {
+    public void dubboAdaptiveTest() {
         ExtensionLoader<Protocol> extensionLoader = ExtensionLoader.getExtensionLoader(Protocol.class);
         Protocol protocolAdaptiveExtension = extensionLoader.getAdaptiveExtension();
+        ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension();
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------");
+        ExtensionLoader<Animal> animalExtensionLoader = ExtensionLoader.getExtensionLoader(Animal.class);
+        Animal adaptiveExtension = animalExtensionLoader.getAdaptiveExtension();
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put("play","tiger");
+        adaptiveExtension.play(new URL("dubbo","127.0.0.1",8080,parameters));
     }
 
     @Test
