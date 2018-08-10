@@ -7,10 +7,12 @@ import com.alibaba.dubbo.registry.RegistryFactory;
 import com.alibaba.dubbo.rpc.Protocol;
 import com.alibaba.dubbo.rpc.ProxyFactory;
 import com.zyouke.dubbo.base.DynamicCreateObject;
-import com.zyouke.dubbo.base.spi.Animal;
+import com.zyouke.dubbo.base.spi.animal.Animal;
+import com.zyouke.dubbo.base.spi.job.Job;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -56,6 +58,17 @@ public class DubboBaseTest {
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put("play","tiger");
         adaptiveExtension.play(new URL("dubbo","127.0.0.1",8080,parameters));
+    }
+
+    @Test
+    public void dubboActivateTest() {
+        ExtensionLoader<Job> jobExtensionLoader = ExtensionLoader.getExtensionLoader(Job.class);
+        URL url = new URL("dubbo", "127.0.0.1", 8080);
+        url = url.addParameter("teacher","default_group");
+        List<Job> jobs = jobExtensionLoader.getActivateExtension(url, "default_group");
+        for (Job job : jobs) {
+            job.work();
+        }
     }
 
     @Test

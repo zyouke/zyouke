@@ -1,0 +1,2 @@
+computer=com.zyouke.dubbo.base.spi.job.Computer
+teacher=com.zyouke.dubbo.base.spi.job.Teacher

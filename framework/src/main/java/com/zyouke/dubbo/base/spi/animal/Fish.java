@@ -1,11 +1,12 @@
-package com.zyouke.dubbo.base.spi;
+package com.zyouke.dubbo.base.spi.animal;
 
 import com.alibaba.dubbo.common.URL;
+import com.zyouke.dubbo.base.spi.animal.Animal;
 
 /**
  * @Author: zhoujun
  */
-public class Fish implements Animal{
+public class Fish implements Animal {
     @Override
     public void eat() {
         System.out.println("鱼吃草...");

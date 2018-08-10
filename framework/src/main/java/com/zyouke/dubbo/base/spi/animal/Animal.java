@@ -1,4 +1,4 @@
-package com.zyouke.dubbo.base.spi;
+package com.zyouke.dubbo.base.spi.animal;
 
 import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.common.extension.Adaptive;
@@ -6,7 +6,7 @@ import com.alibaba.dubbo.common.extension.SPI;
 
 /**
  * @Author: zhoujun
- * 动物
+ * 测试 dubbo Adaptive注解和spi注解
  */
 @SPI
 public interface Animal {
