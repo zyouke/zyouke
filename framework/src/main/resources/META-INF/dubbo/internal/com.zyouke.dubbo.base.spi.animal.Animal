@@ -1,0 +1,2 @@
+tiger=com.zyouke.dubbo.base.spi.animal.Tiger
+fish=com.zyouke.dubbo.base.spi.animal.Fish
