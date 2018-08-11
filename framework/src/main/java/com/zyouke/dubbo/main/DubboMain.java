@@ -1,13 +1,11 @@
 package com.zyouke.dubbo.main;
 
-import com.alibaba.dubbo.common.extension.Adaptive;
-import com.zyouke.utils.ThreadUtil;
-import org.springframework.context.ApplicationContext;
+
+
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
-
 /**
  * DubboMain.java
  * dubbo 测试入口
