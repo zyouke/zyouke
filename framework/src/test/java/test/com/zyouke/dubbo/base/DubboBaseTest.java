@@ -64,8 +64,8 @@ public class DubboBaseTest {
     public void dubboActivateTest() {
         ExtensionLoader<Job> jobExtensionLoader = ExtensionLoader.getExtensionLoader(Job.class);
         URL url = new URL("dubbo", "127.0.0.1", 8080);
-        url = url.addParameter("teacher","default_group");
-        List<Job> jobs = jobExtensionLoader.getActivateExtension(url, "default_group");
+        url = url.addParameter("value","teacher");
+        List<Job> jobs = jobExtensionLoader.getActivateExtension(url, "value","job_group");
         for (Job job : jobs) {
             job.work();
         }

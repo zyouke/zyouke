@@ -5,7 +5,7 @@ import com.alibaba.dubbo.common.extension.Activate;
 /**
  * @Author: zhoujun
  */
-@Activate(group = {"default_group"},order = 1,value = "teacher")
+@Activate(group = {"job_group"},order = 1,value = "teacher")
 public class Teacher implements Job{
     @Override
     public void work() {
