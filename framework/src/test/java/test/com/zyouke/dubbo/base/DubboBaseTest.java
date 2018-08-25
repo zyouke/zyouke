@@ -1,5 +1,6 @@
 package test.com.zyouke.dubbo.base;
 
+import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.common.compiler.Compiler;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
@@ -64,11 +65,12 @@ public class DubboBaseTest {
     public void dubboActivateTest() {
         ExtensionLoader<Job> jobExtensionLoader = ExtensionLoader.getExtensionLoader(Job.class);
         URL url = new URL("dubbo", "127.0.0.1", 8080);
-        url = url.addParameter("value","teacher");
-        List<Job> jobs = jobExtensionLoader.getActivateExtension(url, "value","job_group");
+        //url = url.addParameter(Constants.TOKEN_KEY,"teacher");
+        List<Job> jobs = jobExtensionLoader.getActivateExtension(url, Constants.TOKEN_KEY,"job_group");
         for (Job job : jobs) {
             job.work();
         }
+
     }
 
     @Test

@@ -5,7 +5,7 @@ import com.alibaba.dubbo.common.extension.Activate;
 /**
  * @Author: zhoujun
  */
-@Activate(group = {"job_group"},order = 2)
+@Activate(group = {"job_group"})
 public class Farmer implements Job{
     @Override
     public void work() {
