@@ -1,41 +1,35 @@
 package com.zyouke.netty.handler;
 
-import org.apache.commons.lang.time.DateFormatUtils;
-
+import com.zyouke.utils.RandomUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
-public class TimeClientHandler extends ChannelHandlerAdapter {
-    
-    private  ByteBuf requestBuf;
+import java.util.Date;
 
-    public TimeClientHandler() {
-	String request = "请求服务系统时间";
-	requestBuf = Unpooled.buffer(request.getBytes().length);
-	requestBuf.writeBytes(request.getBytes());
+public class TimeClientHandler extends ChannelHandlerAdapter{
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        ByteBuf readByteBuf = (ByteBuf) msg;
+        byte[] bytes = new byte[readByteBuf.readableBytes()];
+        readByteBuf.readBytes(bytes);
+        String response = new String(bytes, "UTF-8");
+        System.out.println("获取服务端响应:"+response);
+        ByteBuf writeByteBuf = Unpooled.copiedBuffer(RandomUtil.getRandomString().getBytes());
+        ctx.writeAndFlush(writeByteBuf);
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-	System.out.println("TimeClient请求TimeServer.....");
-        ctx.writeAndFlush(requestBuf);
+        System.out.println("客户端和服务端已建立起链接....");
+        ByteBuf writeByteBuf = Unpooled.copiedBuffer(RandomUtil.getRandomString().getBytes());
+        ctx.writeAndFlush(writeByteBuf);
     }
-    
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-	System.out.println("TimeServer返回消息");
-        ByteBuf buf = (ByteBuf) msg;
-        byte[] byteArr = new byte[buf.readableBytes()];
-        buf.readBytes(byteArr);
-        String response = new String(byteArr,"UTF-8");
-	System.out.println("现在是:" + DateFormatUtils.format(Long.valueOf(response),"yyyy-MM-dd HH:mm:ss sss"));
-    }
-    
+
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-	System.out.println("处理异常...");
-	ctx.close();
+        System.out.println("服务端出现异常,清空资源");
+        ctx.close();
     }
 }
