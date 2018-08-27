@@ -30,6 +30,7 @@ public class TimeService {
                         }
                     });
             ChannelFuture future = b.bind("127.0.0.1",8080).sync();
+            System.out.println(b.toString());
             future.channel().closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();

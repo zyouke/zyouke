@@ -16,8 +16,6 @@ public class TimeClientHandler extends ChannelHandlerAdapter{
         readByteBuf.readBytes(bytes);
         String response = new String(bytes, "UTF-8");
         System.out.println("获取服务端响应:"+response);
-        ByteBuf writeByteBuf = Unpooled.copiedBuffer(RandomUtil.getRandomString().getBytes());
-        ctx.writeAndFlush(writeByteBuf);
     }
 
     @Override

@@ -1,9 +1,11 @@
 package com.zyouke.netty.handler;
 
+import com.zyouke.utils.ThreadUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import org.apache.commons.lang.time.DateFormatUtils;
 
 import java.util.Date;
 
@@ -14,8 +16,8 @@ public class TimeServiceHandler extends ChannelHandlerAdapter{
         byte[] bytes = new byte[readByteBuf.readableBytes()];
         readByteBuf.readBytes(bytes);
         String request = new String(bytes, "UTF-8");
-        System.out.println("获取客户:"+request+"对时间的请求");
-        ByteBuf writeByteBuf = Unpooled.copiedBuffer(new Date().toString().getBytes());
+        System.out.println(ThreadUtil.getThreadName() + "获取客户:"+request+"对时间的请求");
+        ByteBuf writeByteBuf = Unpooled.copiedBuffer(DateFormatUtils.format(new Date(),"yyyy-mm-dd HH:MM:SS:SSS").getBytes());
         ctx.writeAndFlush(writeByteBuf);
     }
 
