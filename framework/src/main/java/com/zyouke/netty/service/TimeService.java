@@ -9,6 +9,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 /**
  * 请求时间的服务
@@ -30,7 +32,12 @@ public class TimeService {
                         }
                     });
             ChannelFuture future = b.bind("127.0.0.1",8080).sync();
-            System.out.println(b.toString());
+            future.addListener(new GenericFutureListener<Future<? super Void>>() {
+                @Override
+                public void operationComplete(Future<? super Void> future) throws Exception {
+                    System.out.println("netty 服务在8080 端口启动成功");
+                }
+            });
             future.channel().closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();
