@@ -19,7 +19,7 @@ public class ServiceTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("dubbo-consumer.xml");
         IAreaService areaService = (IAreaService) context.getBean("areaService");
         List<Area> list = areaService.findList(0, 100);
-        System.out.println("------------------ size : "+list.size());
+        System.out.println("------------------"+list.toString());
     }
 
 
