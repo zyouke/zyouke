@@ -15,8 +15,7 @@ public class DynamicProxyTest {
     public void gamePlayerDynamicTest(){
         IGamePlayerDynamic gamePlayerDynamic = new GamePlayerDynamic();
         GamePlayerProxyDynamic gamePlayerProxyDynamic = new GamePlayerProxyDynamic(gamePlayerDynamic);
-        IGamePlayerDynamic proxy = (IGamePlayerDynamic) gamePlayerProxyDynamic.getProxy();
-        proxy.killBoss();
+        IGamePlayerDynamic proxy = (IGamePlayerDynamic)gamePlayerProxyDynamic.getProxy();
     }
 
 
