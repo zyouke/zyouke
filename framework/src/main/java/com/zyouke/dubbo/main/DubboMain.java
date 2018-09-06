@@ -3,9 +3,13 @@ package com.zyouke.dubbo.main;
 
 
 
+import org.apache.commons.lang.SystemUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
+
+import static org.apache.commons.lang.SystemUtils.OS_NAME;
+
 /**
  * DubboMain.java
  * dubbo 测试入口
@@ -21,10 +25,16 @@ public class DubboMain {
         ClassPathXmlApplicationContext context2 = new ClassPathXmlApplicationContext("applicationContext.xml","dubbo/dubbo_provider_2.xml");
         context2.start();
         System.out.println("Dubbo provider2 start...");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String OS_NAME = SystemUtils.OS_NAME;
+        System.out.println("-----------------------------当前操作系统为 : " + OS_NAME);
+        if (OS_NAME.indexOf("linux") >= 0){
+            while (true){}
+        }else {
+            try {
+                System.in.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
