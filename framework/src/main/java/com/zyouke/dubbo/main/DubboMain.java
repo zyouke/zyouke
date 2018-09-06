@@ -26,7 +26,7 @@ public class DubboMain {
         context2.start();
         System.out.println("Dubbo provider2 start...");
         String OS_NAME = SystemUtils.OS_NAME;
-        System.out.println("-----------------------------当前操作系统为 : " + OS_NAME);
+        System.out.println("-----------------------------当前操作系统为 : " + OS_NAME + "---------------------------------");
         if (OS_NAME.indexOf("Windows") >= 0){
             try {
                 System.in.read();
