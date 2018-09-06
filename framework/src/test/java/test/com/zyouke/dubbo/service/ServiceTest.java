@@ -1,10 +1,7 @@
 package test.com.zyouke.dubbo.service;
 
-import com.alibaba.dubbo.common.bytecode.Proxy;
-import com.alibaba.dubbo.rpc.proxy.InvokerInvocationHandler;
 import com.zyouke.bean.Area;
-import com.zyouke.dubbo.service.AreaServiceImpl;
-import com.zyouke.service.IAreaService;
+import com.zyouke.service.IDubboService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,11 +16,11 @@ public class ServiceTest {
     @Test
     public void areaServiceTest(){
         ApplicationContext context = new ClassPathXmlApplicationContext("dubbo-consumer.xml");
-        IAreaService areaService = (IAreaService) context.getBean("areaService");
-        Proxy bean = (Proxy) context.getBean("areaService");
-        System.out.println("IAreaService 的代理对象的class类型 : " + bean.getClass());
-        List<Area> list = areaService.findList(0, 100);
-        System.out.println("------------------"+list.toString());
+        IDubboService dubboService = (IDubboService) context.getBean("dubboService");
+        System.out.println("IDubboService 的代理对象的class类型 : " + dubboService.getClass());
+        for (int i = 0; i < 10; i++) {
+            System.out.println("------------------"+dubboService.getExecuteThread());
+        }
     }
 
 

@@ -1,13 +1,10 @@
 package test.com.zyouke.rpc;
 
 import com.zyouke.bean.Order;
-import com.zyouke.service.IOrderService;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Date;

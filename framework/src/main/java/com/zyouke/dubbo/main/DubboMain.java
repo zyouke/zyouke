@@ -17,7 +17,6 @@ import static org.apache.commons.lang.SystemUtils.OS_NAME;
  * @create 2017/11/16 10:22
  */
 public class DubboMain {
-    // java -cp framework.jar com.zyouke.dubbo.main.DubboMain
     public static void main(String[] args){
         ClassPathXmlApplicationContext context1 = new ClassPathXmlApplicationContext("applicationContext.xml","dubbo/dubbo_provider_1.xml");
         context1.start();

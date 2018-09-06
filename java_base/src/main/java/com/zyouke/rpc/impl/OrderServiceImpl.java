@@ -1,7 +1,6 @@
 package com.zyouke.rpc.impl;
 
 import com.zyouke.bean.Order;
-import com.zyouke.service.IOrderService;
 
 /**
  * @Author: zhoujun

@@ -15,5 +15,5 @@
 	<!-- 使用zookeeper注册中心暴露服务地址 -->
 	<!-- 注册中心地址 -->
 	<dubbo:registry protocol="zookeeper" address="${zookeeper_addr}" />
-	<dubbo:reference id="areaService" interface="com.zyouke.service.IAreaService"/>
+	<dubbo:reference id="dubboService" interface="com.zyouke.service.IDubboService"/>
 </beans>
