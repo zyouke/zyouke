@@ -2,6 +2,7 @@ package com.zyouke.dubbo.service;
 
 import com.zyouke.bean.Area;
 import com.zyouke.service.IDubboService;
+import com.zyouke.utils.RandomUtil;
 import com.zyouke.utils.ThreadUtil;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,8 @@ public class DubboService implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
+        int randomNumber = RandomUtil.getRandomNumber(1, 30);
+        ThreadUtil.sleep(randomNumber);
         return ThreadUtil.getThreadName();
     }
 }
