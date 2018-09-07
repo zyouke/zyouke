@@ -7,6 +7,7 @@ import com.zyouke.utils.ThreadUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author: zhoujun
@@ -14,6 +15,7 @@ import java.util.List;
 @Service("dubboService")
 public class DubboService implements IDubboService{
 
+    AtomicInteger atomicInteger = new AtomicInteger();
     /**
      * 获取当前执行的线程
      * @return
