@@ -6,9 +6,9 @@ package com.zyouke.bean;
 public class DubboBean {
     private String threadName;
     private String requestTime;
-    private String executeTime;
+    private int executeTime;
 
-    public DubboBean(String requestTime, String executeTime, String threadName) {
+    public DubboBean(String requestTime, int executeTime, String threadName) {
         this.requestTime = requestTime;
         this.executeTime = executeTime;
         this.threadName = threadName;

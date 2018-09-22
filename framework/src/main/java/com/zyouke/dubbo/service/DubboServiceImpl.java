@@ -31,6 +31,6 @@ public class DubboServiceImpl implements IDubboService{
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
         lock.unlock();
-        return new DubboBean(requestTime,requestTime,ThreadUtil.getThreadName()).toString();
+        return new DubboBean(requestTime,randomNumber,ThreadUtil.getThreadName()).toString();
     }
 }
