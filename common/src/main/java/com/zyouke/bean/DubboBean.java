@@ -4,9 +4,9 @@ package com.zyouke.bean;
  * dubbo 测试返回的bean
  */
 public class DubboBean {
+    private String threadName;
     private String requestTime;
     private String executeTime;
-    private String threadName;
 
     public DubboBean(String requestTime, String executeTime, String threadName) {
         this.requestTime = requestTime;
@@ -17,9 +17,9 @@ public class DubboBean {
     @Override
     public String toString() {
         return "DubboBean{" +
-                "requestTime='" + requestTime + '\'' +
+                "threadName='" + threadName + '\'' +
+                ", requestTime='" + requestTime + '\'' +
                 ", executeTime='" + executeTime + '\'' +
-                ", threadName='" + threadName + '\'' +
                 '}';
     }
 }
