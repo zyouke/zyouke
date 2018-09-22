@@ -27,6 +27,6 @@ public class DubboServiceImpl implements IDubboService{
         String date = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
-        return ThreadUtil.getThreadName() +"_requestTime"+ date + "_execute_time :" + randomNumber;
+        return ThreadUtil.getThreadName() +"_requestTime : "+ date + "_execute_time :" + randomNumber;
     }
 }
