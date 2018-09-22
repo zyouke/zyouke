@@ -1,6 +1,7 @@
 package com.zyouke.dubbo.service;
 
 import com.zyouke.bean.Area;
+import com.zyouke.bean.DubboBean;
 import com.zyouke.service.IDubboService;
 import com.zyouke.utils.RandomUtil;
 import com.zyouke.utils.ThreadUtil;
@@ -26,10 +27,10 @@ public class DubboServiceImpl implements IDubboService{
     @Override
     public String getExecuteThread() {
         lock.lock();
-        String date = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
+        String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
         lock.unlock();
-        return ThreadUtil.getThreadName() +"_requestTime : "+ date + "_execute_time :" + randomNumber;
+        return new DubboBean(requestTime,requestTime,ThreadUtil.getThreadName()).toString();
     }
 }
