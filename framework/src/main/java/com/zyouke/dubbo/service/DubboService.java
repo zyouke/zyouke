@@ -22,8 +22,8 @@ public class DubboService implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
-        int randomNumber = RandomUtil.getRandomNumber(1, 30);
+        int randomNumber = RandomUtil.getRandomNumber(1, 300);
         ThreadUtil.sleep(randomNumber);
-        return ThreadUtil.getThreadName();
+        return ThreadUtil.getThreadName() + "_execute_time :" + randomNumber;
     }
 }
