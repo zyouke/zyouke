@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Author: zhoujun
  */
 @Service("dubboService")
-public class DubboService implements IDubboService{
+public class DubboServiceImpl implements IDubboService{
 
     AtomicInteger atomicInteger = new AtomicInteger();
     /**
@@ -22,7 +22,7 @@ public class DubboService implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
-        int randomNumber = RandomUtil.getRandomNumber(1, 300);
+        int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
         return ThreadUtil.getThreadName() + "_execute_time :" + randomNumber;
     }
