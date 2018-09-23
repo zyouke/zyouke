@@ -11,7 +11,7 @@
 	<!-- 使用zookeeper注册中心暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="${zookeeper_addr}"/>
 	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<dubbo:protocol name="dubbo" port="${dubbo_port_1}" threads="1"/>
+	<dubbo:protocol name="dubbo" port="${dubbo_port_1}" threads="500"/>
 	<!-- 用户服务接口 -->
 	<dubbo:service interface="com.zyouke.service.IDubboService"
 				   ref="dubboService"
