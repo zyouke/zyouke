@@ -27,6 +27,7 @@ public class DubboServiceImpl implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
+        System.out.println("----------" + this.toString());
         int requestCount = 0;
         String threadName = ThreadUtil.getThreadName();
         if (threadName.startsWith("DubboServerHandler-122.114.90.68:20881")){
