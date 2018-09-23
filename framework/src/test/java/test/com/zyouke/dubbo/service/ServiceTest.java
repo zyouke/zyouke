@@ -16,14 +16,21 @@ import java.util.concurrent.CountDownLatch;
  */
 public class ServiceTest {
 
+    private static int THREADPOOL_SIZE = 1000;
+
     @Test
     public void areaServiceTest(){
         CountDownLatch countDownLatch = new CountDownLatch(1);
         ApplicationContext context = new ClassPathXmlApplicationContext("dubbo-consumer.xml");
         IDubboService dubboService = (IDubboService) context.getBean("dubboService");
+        IDubboService dubboService20880 = (IDubboService) context.getBean("dubboService20880");
+        IDubboService dubboService20881 = (IDubboService) context.getBean("dubboService20881");
         System.out.println("IDubboService 的代理对象的class类型 : " + dubboService.getClass());
-        CustomThreadPool customThreadPool = new CustomThreadPool(1000,1000);
-        for (int i = 0; i < 1000; i++) {
+        dubboService20880.resetCounter();
+        dubboService20881.resetCounter();
+        CustomThreadPool customThreadPool = new CustomThreadPool(THREADPOOL_SIZE,THREADPOOL_SIZE);
+
+        for (int i = 0; i < THREADPOOL_SIZE; i++) {
             customThreadPool.execute(new Runnable() {
                 @Override
                 public void run() {
@@ -37,7 +44,9 @@ public class ServiceTest {
             });
         }
         countDownLatch.countDown();
-        ThreadUtil.sleep(5000);
+        ThreadUtil.sleep(3000);
+        System.out.println("----------" + dubboService20880.getRequestCount());
+        System.out.println("----------" + dubboService20881.getRequestCount());
     }
 
 
