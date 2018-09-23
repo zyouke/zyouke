@@ -19,7 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 @Service("dubboService")
 public class DubboServiceImpl implements IDubboService{
-    private AtomicInteger atomicInteger = new AtomicInteger(0);
+    private AtomicInteger atomicInteger = new AtomicInteger(1);
     /**
      * 获取当前执行的线程
      * @return
@@ -30,7 +30,6 @@ public class DubboServiceImpl implements IDubboService{
         String threadName = ThreadUtil.getThreadName();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
-        System.out.println(threadName + "----------" + this.toString() + "-------------" +requestCount);
         ThreadUtil.sleep(randomNumber);
         return new DubboBean(requestTime,randomNumber,threadName,requestCount).toString();
     }
