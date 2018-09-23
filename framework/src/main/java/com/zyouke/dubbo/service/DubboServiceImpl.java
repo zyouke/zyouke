@@ -19,24 +19,18 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 @Service("dubboService")
 public class DubboServiceImpl implements IDubboService{
-    private AtomicInteger atomicInteger_20880 = new AtomicInteger(0);
-    private AtomicInteger atomicInteger_20881 = new AtomicInteger(0);
+    private AtomicInteger atomicInteger = new AtomicInteger(0);
     /**
      * 获取当前执行的线程
      * @return
      */
     @Override
     public String getExecuteThread() {
-        int requestCount = 0;
+        int requestCount = atomicInteger.getAndIncrement();
         String threadName = ThreadUtil.getThreadName();
-        if (threadName.startsWith("DubboServerHandler-122.114.90.68:20881")){
-            requestCount = atomicInteger_20881.getAndIncrement();
-        }else if (threadName.startsWith("DubboServerHandler-122.114.90.68:20880")){
-            requestCount = atomicInteger_20880.getAndIncrement();
-        }
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
-        System.out.println(threadName + "----------" + this.toString());
+        System.out.println(threadName + "----------" + this.toString() + "-------------" +requestCount);
         ThreadUtil.sleep(randomNumber);
         return new DubboBean(requestTime,randomNumber,threadName,requestCount).toString();
     }
