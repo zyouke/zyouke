@@ -18,6 +18,9 @@ public interface IDubboService {
      */
     String getRequestCount();
 
-
+    /**
+     * 重置計數器
+     */
+    void resetCounter();
 
 }
