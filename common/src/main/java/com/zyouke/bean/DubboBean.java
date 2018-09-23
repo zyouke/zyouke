@@ -7,11 +7,13 @@ public class DubboBean {
     private String threadName;
     private String requestTime;
     private int executeTime;
+    private int requestCount;
 
-    public DubboBean(String requestTime, int executeTime, String threadName) {
+    public DubboBean(String requestTime, int executeTime, String threadName,int requestCount) {
         this.requestTime = requestTime;
         this.executeTime = executeTime;
         this.threadName = threadName;
+        this.requestCount = requestCount;
     }
 
     @Override
@@ -19,7 +21,8 @@ public class DubboBean {
         return "DubboBean{" +
                 "threadName='" + threadName + '\'' +
                 ", requestTime='" + requestTime + '\'' +
-                ", executeTime='" + executeTime + '\'' +
+                ", executeTime=" + executeTime +
+                ", requestCount=" + requestCount +
                 '}';
     }
 }
