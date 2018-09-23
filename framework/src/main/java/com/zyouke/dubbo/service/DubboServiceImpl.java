@@ -27,7 +27,6 @@ public class DubboServiceImpl implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
-        System.out.println("----------" + this.toString());
         int requestCount = 0;
         String threadName = ThreadUtil.getThreadName();
         if (threadName.startsWith("DubboServerHandler-122.114.90.68:20881")){
@@ -37,6 +36,7 @@ public class DubboServiceImpl implements IDubboService{
         }
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
+        System.out.println(threadName + "----------" + this.toString());
         ThreadUtil.sleep(randomNumber);
         return new DubboBean(requestTime,randomNumber,threadName,requestCount).toString();
     }
