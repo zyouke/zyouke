@@ -19,18 +19,15 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 @Service("dubboService")
 public class DubboServiceImpl implements IDubboService{
-    private Lock lock = new ReentrantLock();
     /**
      * 获取当前执行的线程
      * @return
      */
     @Override
     public String getExecuteThread() {
-        lock.lock();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
-        lock.unlock();
         return new DubboBean(requestTime,randomNumber,ThreadUtil.getThreadName()).toString();
     }
 }
