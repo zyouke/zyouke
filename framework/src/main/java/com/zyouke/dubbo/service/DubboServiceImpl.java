@@ -26,11 +26,21 @@ public class DubboServiceImpl implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
-        int requestCount = atomicInteger.getAndIncrement();
+        atomicInteger.getAndIncrement();
         String threadName = ThreadUtil.getThreadName();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
-        return new DubboBean(requestTime,randomNumber,threadName,requestCount).toString();
+        return new DubboBean(requestTime,randomNumber,threadName).toStringNotRequestCount();
+    }
+
+    /**
+     * 获取请求总数
+     *
+     * @return
+     */
+    @Override
+    public String getRequestCount() {
+        return new DubboBean(ThreadUtil.getThreadName(),atomicInteger.get()).toStringNotRequestTimeExecuteTime();
     }
 }

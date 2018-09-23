@@ -9,19 +9,27 @@ public class DubboBean {
     private int executeTime;
     private int requestCount;
 
-    public DubboBean(String requestTime, int executeTime, String threadName,int requestCount) {
+    public DubboBean(String requestTime, int executeTime, String threadName) {
         this.requestTime = requestTime;
         this.executeTime = executeTime;
+        this.threadName = threadName;
+    }
+    public DubboBean(String threadName,int requestCount) {
         this.threadName = threadName;
         this.requestCount = requestCount;
     }
 
-    @Override
-    public String toString() {
+    public String toStringNotRequestCount() {
         return "DubboBean{" +
                 "threadName='" + threadName + '\'' +
                 ", requestTime='" + requestTime + '\'' +
                 ", executeTime=" + executeTime +
+                '}';
+    }
+
+    public String toStringNotRequestTimeExecuteTime() {
+        return "DubboBean{" +
+                "threadName='" + threadName + '\'' +
                 ", requestCount=" + requestCount +
                 '}';
     }

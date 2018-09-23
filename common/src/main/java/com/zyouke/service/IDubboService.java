@@ -12,6 +12,12 @@ public interface IDubboService {
      */
     String getExecuteThread();
 
+    /**
+     * 获取请求总数
+     * @return
+     */
+    String getRequestCount();
+
 
 
 }
