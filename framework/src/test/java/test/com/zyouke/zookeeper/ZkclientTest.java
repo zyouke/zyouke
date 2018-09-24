@@ -15,19 +15,22 @@ import java.util.List;
  */
 public class ZkclientTest {
 
-    private ZkClient zkClient = new ZkClient("122.114.90.68:2181");
+    //private ZkClient zkClient = new ZkClient("122.114.90.68:2181");
     @Test
     public void zkclientSimpleTest(){
-        zkClient.createPersistent("/zyouke/test",true);
+        long s = System.currentTimeMillis();
+        ZkClient zkClient = new ZkClient("122.114.90.68:2181");
+        System.out.println(System.currentTimeMillis() - s);
+        /*zkClient.createPersistent("/zyouke/test",true);
         ThreadUtil.sleep(1000);
         zkClient.writeData("/zyouke/test",RandomUtil.getRandomString());
         Object readData = zkClient.readData("/zyouke/test");
         System.out.println(readData);
-        zkClient.close();
+        zkClient.close();*/
     }
 
     @Test
-    public void subscribeChildChangesTest(){
+    public void subscribeChildChangesTest(){/*
         zkClient.subscribeChildChanges("/zyouke", new IZkChildListener() {
             @Override
             public void handleChildChange(String parentPath, List<String> currentChilds) throws Exception {
@@ -40,10 +43,10 @@ public class ZkclientTest {
             ThreadUtil.sleep(500);
         }
         ThreadUtil.sleep(5000);
-    }
+    */}
 
-    @Before
-    public void before(){
+    //@Before
+    public void before(){/*
         zkClient.deleteRecursive("/zyouke");
-    }
+    */}
 }

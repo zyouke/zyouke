@@ -14,12 +14,12 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @Author: zhoujun
  */
-public class ServiceTest {
+public class DubboServiceTest {
 
     private static int THREADPOOL_SIZE = 1000;
 
     @Test
-    public void areaServiceTest(){
+    public void dubboServiceTest(){
         CountDownLatch countDownLatch = new CountDownLatch(1);
         ApplicationContext context = new ClassPathXmlApplicationContext("dubbo-consumer.xml");
         IDubboService dubboService = (IDubboService) context.getBean("dubboService");
