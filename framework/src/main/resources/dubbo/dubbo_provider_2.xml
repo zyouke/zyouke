@@ -16,6 +16,7 @@
 	<dubbo:service interface="com.zyouke.service.IDubboService"
 				   ref="dubboService"
 				   loadbalance = "roundrobin"
-	               timeout="50000"/>
+	               timeout="50000"
+				   weight="50"/>
     <!--<dubbo:monitor protocol="zookeeper" address="${zookeeper_addr}"/>-->
 </beans>  
