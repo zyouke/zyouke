@@ -1,9 +1,5 @@
 package com.zyouke.rpc;
 
-import com.zyouke.bean.Order;
-import com.zyouke.rpc.impl.OrderServiceImpl;
-
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -35,9 +31,6 @@ public class JdkRpcServerImpl implements JdkRpcServer{
                 Object arg = in.readObject();
                 System.out.println("获取客户端请求的接口:" + serviceName + "获取客户端请求的方法:" + methodName);
                 Class serviceClass = null;
-                if ("com.zyouke.service.IOrderService".equals(serviceName)){
-                    serviceClass = OrderServiceImpl.class;
-                }
                 Method method = serviceClass.getMethod(methodName, parameterTypes);
                 Object result  = method.invoke(serviceClass.newInstance(), arg);
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());

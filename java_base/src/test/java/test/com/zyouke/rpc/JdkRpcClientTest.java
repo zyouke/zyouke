@@ -27,7 +27,8 @@ public class JdkRpcClientTest {
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeUTF("com.zyouke.service.IOrderService");
             out.writeUTF("addOrder");
-            out.writeObject(IOrderService.class.getMethod("addOrder",Order.class).getParameterTypes());
+            // IOrderService 接口删了，如需要需要添加
+            //out.writeObject(IOrderService.class.getMethod("addOrder",Order.class).getParameterTypes());
             out.writeObject(order);
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             System.out.println("------------" + in.readObject());

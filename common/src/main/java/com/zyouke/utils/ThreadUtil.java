@@ -1,13 +1,5 @@
 package com.zyouke.utils;
 
-import org.apache.commons.lang.StringUtils;
-
-import java.util.UUID;
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CountDownLatch;
-
 /**
  * ThreadUtil.java
  * 线程工具类
