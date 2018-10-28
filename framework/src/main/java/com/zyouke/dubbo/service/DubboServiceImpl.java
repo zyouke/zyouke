@@ -28,12 +28,10 @@ public class DubboServiceImpl implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
-        String remoteHost = RpcContext.getContext().getRemoteHost();
-        URL url =  RpcContext.getContext().getUrl();
-        System.out.println("url : " + url.toString() + "  remoteHost :" +remoteHost);
         counter.getAndIncrement();
         String threadName = ThreadUtil.getThreadName();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
+        System.out.println("请求到来时间：" + requestTime);
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
         return new DubboBean(requestTime,randomNumber,threadName).toStringNotRequestCount();
