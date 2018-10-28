@@ -5,6 +5,7 @@ import com.alibaba.dubbo.rpc.RpcContext;
 import com.zyouke.bean.Area;
 import com.zyouke.bean.DubboBean;
 import com.zyouke.service.IDubboService;
+import com.zyouke.utils.ProcessUtil;
 import com.zyouke.utils.RandomUtil;
 import com.zyouke.utils.ThreadUtil;
 import org.apache.commons.lang.time.DateFormatUtils;
@@ -33,12 +34,9 @@ public class DubboServiceImpl implements IDubboService{
         String threadName = ThreadUtil.getThreadName();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
-        if (randomNumber % 3 == 0){
-            Thread.currentThread().interrupt();
-            System.out.println("程序出现异常。。。。。。。。。");
-        }
         ThreadUtil.sleep(randomNumber);
         System.out.println("请求执行时间：" + (System.currentTimeMillis() - start));
+        System.out.println("ProcessUtil :" + ProcessUtil.getProcess());
         return new DubboBean(requestTime,randomNumber,threadName).toStringNotRequestCount();
     }
 
