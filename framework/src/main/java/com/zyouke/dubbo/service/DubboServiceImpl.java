@@ -28,12 +28,13 @@ public class DubboServiceImpl implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
+        long start = System.currentTimeMillis();
         counter.getAndIncrement();
         String threadName = ThreadUtil.getThreadName();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
-        System.out.println("请求到来时间：" + requestTime);
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
+        System.out.println("请求执行时间：" + (System.currentTimeMillis() - start));
         return new DubboBean(requestTime,randomNumber,threadName).toStringNotRequestCount();
     }
 
