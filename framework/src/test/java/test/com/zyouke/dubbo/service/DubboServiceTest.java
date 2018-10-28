@@ -45,8 +45,6 @@ public class DubboServiceTest {
         }
         countDownLatch.countDown();
         ThreadUtil.sleep(3000);
-        System.out.println("----------" + dubboService20880.getRequestCount());
-        System.out.println("----------" + dubboService20881.getRequestCount());
     }
 
 

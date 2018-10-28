@@ -15,8 +15,11 @@
 	<!-- 使用zookeeper注册中心暴露服务地址 -->
 	<!-- 注册中心地址 -->
 	<dubbo:registry protocol="zookeeper" address="${zookeeper_addr}" file="./files/dubbo/dubbo.cache" check="false"/>
-	<dubbo:reference id="dubboService" interface="com.zyouke.service.IDubboService"/>
-	<dubbo:reference id="dubboService20880" interface="com.zyouke.service.IDubboService" url="dubbo://122.114.90.68:20880"/>
-	<dubbo:reference id="dubboService20881" interface="com.zyouke.service.IDubboService" url="dubbo://122.114.90.68:20881"/>
+	<dubbo:reference id="dubboService" interface="com.zyouke.service.IDubboService"
+	                 retries="2"/>
+	<dubbo:reference id="dubboService20880" interface="com.zyouke.service.IDubboService"
+					 url="dubbo://122.114.90.68:20880"/>
+	<dubbo:reference id="dubboService20881" interface="com.zyouke.service.IDubboService"
+					 url="dubbo://122.114.90.68:20881"/>
 
 </beans>
