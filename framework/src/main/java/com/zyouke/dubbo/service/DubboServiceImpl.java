@@ -33,6 +33,10 @@ public class DubboServiceImpl implements IDubboService{
         String threadName = ThreadUtil.getThreadName();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
+        if (randomNumber % 3 == 0){
+            Thread.currentThread().interrupt();
+            System.out.println("程序出现异常。。。。。。。。。");
+        }
         ThreadUtil.sleep(randomNumber);
         System.out.println("请求执行时间：" + (System.currentTimeMillis() - start));
         return new DubboBean(requestTime,randomNumber,threadName).toStringNotRequestCount();
