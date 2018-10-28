@@ -1,5 +1,7 @@
 package com.zyouke.dubbo.service;
 
+import com.alibaba.dubbo.common.URL;
+import com.alibaba.dubbo.rpc.RpcContext;
 import com.zyouke.bean.Area;
 import com.zyouke.bean.DubboBean;
 import com.zyouke.service.IDubboService;
@@ -26,7 +28,10 @@ public class DubboServiceImpl implements IDubboService{
      */
     @Override
     public String getExecuteThread() {
-        System.out.println(counter.getAndIncrement());
+        String remoteHost = RpcContext.getContext().getRemoteHost();
+        URL url =  RpcContext.getContext().getUrl();
+        System.out.println("url : " + url.toString() + "  remoteHost :" +remoteHost);
+        counter.getAndIncrement();
         String threadName = ThreadUtil.getThreadName();
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
