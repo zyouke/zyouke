@@ -31,6 +31,7 @@ public class DubboServiceImpl implements IDubboService{
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
+        System.out.println("---------------------------");
         return new DubboBean(requestTime,randomNumber,threadName).toStringNotRequestCount();
     }
 
