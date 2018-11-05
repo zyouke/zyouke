@@ -1,21 +1,16 @@
 package com.zyouke.dubbo.service;
 
-import com.alibaba.dubbo.common.URL;
-import com.alibaba.dubbo.rpc.RpcContext;
-import com.zyouke.bean.Area;
 import com.zyouke.bean.DubboBean;
+import com.zyouke.dubbo.main.DubboMain;
 import com.zyouke.service.IDubboService;
-import com.zyouke.utils.ProcessUtil;
 import com.zyouke.utils.RandomUtil;
 import com.zyouke.utils.ThreadUtil;
 import org.apache.commons.lang.time.DateFormatUtils;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: zhoujun
@@ -35,8 +30,15 @@ public class DubboServiceImpl implements IDubboService{
         String requestTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss:ssss");
         int randomNumber = RandomUtil.getRandomNumber(1, 100);
         ThreadUtil.sleep(randomNumber);
+        if (randomNumber % 3 == 0){
+            ClassPathXmlApplicationContext contextOne = DubboMain.contextOne;
+            if (contextOne != null) {
+                contextOne.stop();
+                contextOne.close();
+                contextOne = null;
+            }
+        }
         System.out.println("请求执行时间：" + (System.currentTimeMillis() - start));
-        System.out.println("ProcessUtil :" + ProcessUtil.getProcess());
         return new DubboBean(requestTime,randomNumber,threadName).toStringNotRequestCount();
     }
 

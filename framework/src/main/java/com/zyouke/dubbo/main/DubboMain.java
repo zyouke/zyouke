@@ -20,6 +20,8 @@ import static org.apache.commons.lang.SystemUtils.OS_NAME;
 public class DubboMain {
     private static final String ONE = "one";
     private static final String TWO = "two";
+    public static ClassPathXmlApplicationContext contextOne;
+    public static ClassPathXmlApplicationContext contextTwo;
     public static void main(String[] args){
         if (args.length > 0){
             if (args[0].equals(ONE)){
@@ -46,15 +48,15 @@ public class DubboMain {
     }
 
     private static void startProviderONE(){
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml","dubbo/dubbo_provider_1.xml");
-        context.start();
-        ProtocolConfig protocolConfig = context.getBean(ProtocolConfig.class);
+        contextOne = new ClassPathXmlApplicationContext("applicationContext.xml","dubbo/dubbo_provider_1.xml");
+        contextOne.start();
+        ProtocolConfig protocolConfig = contextOne.getBean(ProtocolConfig.class);
         System.out.println("Dubbo provider start ==================>" + protocolConfig.toString());
     }
     private static void startProviderTWO(){
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml","dubbo/dubbo_provider_2.xml");
-        context.start();
-        ProtocolConfig protocolConfig = context.getBean(ProtocolConfig.class);
+        contextTwo = new ClassPathXmlApplicationContext("applicationContext.xml","dubbo/dubbo_provider_2.xml");
+        contextTwo.start();
+        ProtocolConfig protocolConfig = contextTwo.getBean(ProtocolConfig.class);
         System.out.println("Dubbo provider start ==================>" + protocolConfig.toString());
     }
 
