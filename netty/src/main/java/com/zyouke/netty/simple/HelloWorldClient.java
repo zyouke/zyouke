@@ -3,6 +3,7 @@ package com.zyouke.netty.simple;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -20,7 +21,8 @@ public class HelloWorldClient {
         handler(new LoggingHandler(LogLevel.INFO)).
         handler(new HelloWorldClientInitializer());
         try {
-            Channel channel = bootstrap.connect("127.0.0.1", 8080).sync().channel();
+            ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 8080).sync();
+            channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

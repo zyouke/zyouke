@@ -16,7 +16,6 @@ public class HelloWorldService {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(boss,worker);
         bootstrap.channel(NioServerSocketChannel.class).
-        handler(new LoggingHandler(LogLevel.INFO)).
         childHandler(new HelloWorldServerInitializer());
         try {
             Channel channel = bootstrap.bind(8080).sync().channel();
