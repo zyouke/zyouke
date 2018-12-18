@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="k12-provider-user-svr"/>
+
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:registry protocol="dubbo" address="zookeeper://10.60.0.63:2181"/>
+
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="25102"/>
+    <dubbo:reference id="privilegeService" interface="com.noriental.usersvr.service.okuser.privilege.PrivilegeService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="privilegeRoleService"
+                     interface="com.noriental.usersvr.service.okuser.privilege.PrivilegeRoleService"
+                     version="4.0.0" timeout="5000" check="false"/>
+
+    <dubbo:reference id="roleService" interface="com.noriental.usersvr.service.okuser.privilege.RoleService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="userOrgService" interface="com.noriental.usersvr.service.okuser.privilege.UserOrgService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="userRoleService" interface="com.noriental.usersvr.service.okuser.privilege.UserRoleService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="userService" interface="com.noriental.usersvr.service.okuser.UserService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="userLoginService" interface="com.noriental.usersvr.service.okuser.UserLoginService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="userRegionCodeService" interface="com.noriental.usersvr.service.okuser.UserRegionCodeService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="klassService" interface="com.noriental.usersvr.service.okuser.KlassService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+
+    <dubbo:reference id="studentService" interface="com.noriental.usersvr.service.okuser.student.StudentService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+    <dubbo:reference id="parentService" interface="com.noriental.usersvr.service.okuser.parent.ParentService"
+                     version="4.0.0" timeout="5000" check="false" retries="0"/>
+</beans>
