@@ -27,30 +27,27 @@ public class NioServer {
             while (iterator.hasNext()){
                 SelectionKey selectionKey = iterator.next();
                 iterator.remove();
-                SocketChannel client = null;
+                SocketChannel clientChannel;
                 if (selectionKey.isAcceptable()){
                     ServerSocketChannel serverChannel = (ServerSocketChannel) selectionKey.channel();
-                    client = serverChannel.accept();
-                    client.configureBlocking(false);
-                    client.register(selector,SelectionKey.OP_READ);
-                    System.out.println("获取客户端连接 ：" + client);
+                    clientChannel = serverChannel.accept();
+                    clientChannel.configureBlocking(false);
+                    clientChannel.register(selector,SelectionKey.OP_READ);
+                    System.out.println("获取客户端连接 ：" + clientChannel);
                 }else if (selectionKey.isReadable()){
-                    client = (SocketChannel) selectionKey.channel();
+                    clientChannel = (SocketChannel) selectionKey.channel();
                     ByteBuffer buffer = ByteBuffer.allocate(1024);
-                    int read = client.read(buffer);
-                    if (read > 0){
+                    buffer.clear();
+                    int readCount = clientChannel.read(buffer);
+                    if (readCount > 0){
                         buffer.flip();
-                        String message = new String(buffer.array(),0,read).replace("\n"," ");
-                        System.out.println(client + ":" + message);
+                        String message = new String(buffer.array(),0,readCount).replace("\n"," ");
+                        System.out.println(clientChannel + ":" + message);
                     }
-                    client.register(selector,SelectionKey.OP_WRITE);
-                }else if (selectionKey.isWritable()){
-                    client = (SocketChannel) selectionKey.channel();
-                    ByteBuffer buffer = ByteBuffer.allocate(1024);
-                    buffer.put("PONG\n".getBytes());
+                    buffer.clear();
+                    buffer.put("PONG".getBytes());
                     buffer.flip();
-                    client.write(buffer);
-                    client.register(selector,SelectionKey.OP_READ);
+                    clientChannel.write(buffer);
                 }
             }
         }
