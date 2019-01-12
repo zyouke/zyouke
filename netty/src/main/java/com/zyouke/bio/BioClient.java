@@ -11,26 +11,21 @@ import java.net.Socket;
  */
 public class BioClient {
     public static void main(String[] args) throws Exception{
-        Socket socket = new Socket();
-        socket.connect(new InetSocketAddress(8080));
-        while (true){
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        OutputStream out = socket.getOutputStream();
-                        out.write(String.valueOf(System.currentTimeMillis()).getBytes());
-                        out.flush();
-                        socket.shutdownOutput();
-                        InputStream in = socket.getInputStream();
-                        byte[] bytes =  new byte[1024];
-                        in.read(bytes);
-                        System.out.println("服务端返回的消息：" + new String(bytes));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
+        for (int i = 0; i < 10; i++) {
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress(8080));
+            try {
+                OutputStream out = socket.getOutputStream();
+                out.write(String.valueOf(System.currentTimeMillis()).getBytes());
+                out.flush();
+                socket.shutdownOutput();
+                InputStream in = socket.getInputStream();
+                byte[] bytes =  new byte[1024];
+                in.read(bytes);
+                System.out.println("服务端返回的消息：" + new String(bytes));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

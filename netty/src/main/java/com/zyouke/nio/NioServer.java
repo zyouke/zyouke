@@ -45,7 +45,7 @@ public class NioServer {
                         System.out.println(clientChannel + ":" + message);
                     }
                     buffer.clear();
-                    buffer.put("PONG".getBytes());
+                    buffer.put("PONG\n".getBytes());
                     buffer.flip();
                     clientChannel.write(buffer);
                 }

@@ -16,23 +16,28 @@ public class BioServer {
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         ServerSocket serverSocket = new ServerSocket(8080);
+        System.out.println("启动端口 BioServer 监听端口：8080");
         while (true) {
             Socket socket = serverSocket.accept();
             System.out.println("当前连接的客户端 ：" + socket.getRemoteSocketAddress().toString());
-            try {
-                byte[] bytes = new byte[1024];
-                InputStream in = socket.getInputStream();
-                in.read(bytes);
-                System.out.println("接收客户端请求的消息：" + new String(bytes));
-                OutputStream out = socket.getOutputStream();
-                out.write("PONG\n".getBytes());
-                out.flush();
-                socket.shutdownOutput();
-                socket.shutdownInput();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        byte[] bytes = new byte[1024];
+                        InputStream in = socket.getInputStream();
+                        in.read(bytes);
+                        System.out.println(Thread.currentThread().getName() + "接收客户端请求的消息：" + new String(bytes));
+                        OutputStream out = socket.getOutputStream();
+                        out.write("PONG\n".getBytes());
+                        out.flush();
+                        socket.shutdownOutput();
+                        socket.shutdownInput();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 }
