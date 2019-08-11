@@ -63,13 +63,13 @@ public class TimeServer {
         }
     }
 
-    private static void reply(SocketChannel channel) {
+    private static void reply(SocketChannel socketChannel) {
         byte[] bytes = "ping".getBytes();
         ByteBuffer byteBuffer = ByteBuffer.allocate(bytes.length);
         byteBuffer.put(bytes);
         byteBuffer.flip();
         try {
-            channel.write(byteBuffer);
+            socketChannel.write(byteBuffer);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,8 +82,12 @@ public class TimeServer {
             SocketChannel channel = (SocketChannel) selectionKey.channel();
             ByteBuffer byteBuffer = ByteBuffer.allocate(50);
             channel.read(byteBuffer);// 当前read事件
-            Codec.decode(byteBuffer);
+            boolean boo = Codec.decode(byteBuffer);
+            if(boo){
+                reply(channel);
+            }
             selectionKey.interestOps(SelectionKey.OP_READ);
+
         } catch (IOException e) {
             try {
                 selectionKey.cancel();

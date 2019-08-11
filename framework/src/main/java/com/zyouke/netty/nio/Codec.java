@@ -14,7 +14,7 @@ public class Codec {
      * 解码
      * @param byteBuffer
      */
-    public static void decode(ByteBuffer byteBuffer){
+    public static boolean decode(ByteBuffer byteBuffer){
         int bodyLen = -1;
         int head_length = 4;//数据包长度
         byte[] headByte = new byte[4];
@@ -49,8 +49,14 @@ public class Codec {
                 if (byteBuffer.remaining() >= bodyLen) {// 大于等于一个包，否则缓存
                     byte[] bodyByte = new byte[bodyLen];
                     byteBuffer.get(bodyByte, 0, bodyLen);
-                    bodyLen = -1;
+                    byteBuffer.flip();
+                    if(byteBuffer.remaining() >0){
+                        cacheBuffer.clear();
+                        cacheBuffer.put(byteBuffer);
+                        isCache = true;
+                    }
                     System.out.println("receive from clien content is:" + new String(bodyByte));
+                    return true;
                 } else {
                     byteBuffer.reset();
                     cacheBuffer.clear();
@@ -60,6 +66,7 @@ public class Codec {
                 }
             }
         }
+        return false;
     }
 
     /**
