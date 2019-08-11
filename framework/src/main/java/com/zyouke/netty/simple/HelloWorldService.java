@@ -12,12 +12,11 @@ public class HelloWorldService {
 
     public static void main(String[] args) {
         EventLoopGroup boss = new NioEventLoopGroup(1);
-        EventLoopGroup worker = new NioEventLoopGroup();
+        EventLoopGroup worker = new NioEventLoopGroup(1);
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(boss,worker);
         bootstrap.channel(NioServerSocketChannel.class)
-        .childHandler(new HelloWorldServerInitializer())
-        .handler(new LoggingHandler(LogLevel.DEBUG));
+        .childHandler(new HelloWorldServerInitializer());
         try {
             Channel channel = bootstrap.bind(8080).sync().channel();
             System.out.println("端口 8080 服务启动");

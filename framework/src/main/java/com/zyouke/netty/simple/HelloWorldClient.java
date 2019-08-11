@@ -18,7 +18,6 @@ public class HelloWorldClient {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group).
         channel(NioSocketChannel.class).
-        handler(new LoggingHandler(LogLevel.INFO)).
         handler(new HelloWorldClientInitializer());
         try {
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 8080).sync();

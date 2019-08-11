@@ -4,12 +4,21 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.net.SocketAddress;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HelloWorldClientHandler extends SimpleChannelInboundHandler<String> {
+    private ExecutorService executorService = Executors.newCachedThreadPool();
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         System.out.println("服务端响应数据 ： " + msg);
-        Thread.sleep(1000);
-        ctx.channel().writeAndFlush("HelloWorld \r\n");
+        for(int i = 0; i < 100; i++){
+            executorService.execute(new Runnable() {
+                @Override
+                public void run(){
+                    ctx.channel().writeAndFlush("HelloWorld \r\n");
+                }
+            });
+        }
     }
 
     @Override

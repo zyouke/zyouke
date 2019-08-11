@@ -5,11 +5,13 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.net.SocketAddress;
+import java.util.Random;
 
 public class HelloWorldServerHandler extends SimpleChannelInboundHandler<String> {
-
+    private Random random = new Random();
     protected void channelRead0(ChannelHandlerContext ctx, String message) throws Exception {
-        System.out.println("接受客户端" + ctx.channel().remoteAddress() + "的请求：" + message);
+        System.out.println(Thread.currentThread().getName() +"处理请求：" + message);
+        Thread.sleep(random.nextInt(500));
         ctx.channel().writeAndFlush("200 \r\n");
     }
 

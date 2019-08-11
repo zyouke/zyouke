@@ -3,7 +3,7 @@ package test.com.zyouke.dubbo.base;
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.common.compiler.Compiler;
-import com.alibaba.dubbo.common.extension.ExtensionLoader;
+import org.apache.dubbo.common.extension.ExtensionLoader;
 import com.alibaba.dubbo.registry.RegistryFactory;
 import com.alibaba.dubbo.rpc.Protocol;
 import com.alibaba.dubbo.rpc.ProxyFactory;
