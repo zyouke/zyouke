@@ -82,10 +82,10 @@ public class TimeServer {
             SocketChannel channel = (SocketChannel) selectionKey.channel();
             ByteBuffer byteBuffer = ByteBuffer.allocate(50);
             channel.read(byteBuffer);// 当前read事件
-            boolean boo = Codec.decode(byteBuffer);
+           /* boolean boo = Codec.decode(byteBuffer);
             if(boo){
                 reply(channel);
-            }
+            }*/
             selectionKey.interestOps(SelectionKey.OP_READ);
 
         } catch (IOException e) {

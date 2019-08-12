@@ -1,35 +1,32 @@
 package com.zyouke.netty.nio;
 
 import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
 
 /**
  * 编解码
  */
 public class Codec {
-
     private static final ByteBuffer cacheBuffer = ByteBuffer.allocate(100);
     private static boolean isCache = false;
-
+    private final static int head_length = 4;//数据包长度
     /**
      * 解码
-     * @param byteBuffer
      */
-    public static boolean decode(ByteBuffer byteBuffer){
+    public static boolean decode(SocketChannel channel) throws Exception{
+        ByteBuffer byteBuffer = ByteBuffer.allocate(50);
+        channel.read(byteBuffer);// 当前read事件
         int bodyLen = -1;
-        int head_length = 4;//数据包长度
         byte[] headByte = new byte[4];
         if (isCache) {
             cacheBuffer.flip();
             int cacheBufferLength = cacheBuffer.remaining();
             byteBuffer.flip();
-            ByteBuffer tempBuffer = ByteBuffer.allocate(byteBuffer.remaining());
-            tempBuffer.put(byteBuffer);
-            tempBuffer.flip();
-            int byteTotal = cacheBufferLength + tempBuffer.remaining();
-            if (byteTotal > byteBuffer.capacity()){
-                byteBuffer = ByteBuffer.allocate(byteTotal);
+            int byteTotalLength = cacheBufferLength + byteBuffer.remaining();
+            if (byteTotalLength > byteBuffer.capacity()){
+                byteBuffer = ByteBuffer.allocate(byteTotalLength);
             }
-            byteBuffer.put(cacheBuffer).put(tempBuffer);
+           // byteBuffer.put(cacheBuffer).put(tempBuffer);
         }
         byteBuffer.flip();
         while (byteBuffer.remaining() > 0) {
@@ -49,7 +46,6 @@ public class Codec {
                 if (byteBuffer.remaining() >= bodyLen) {// 大于等于一个包，否则缓存
                     byte[] bodyByte = new byte[bodyLen];
                     byteBuffer.get(bodyByte, 0, bodyLen);
-                    byteBuffer.flip();
                     if(byteBuffer.remaining() >0){
                         cacheBuffer.clear();
                         cacheBuffer.put(byteBuffer);
