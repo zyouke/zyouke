@@ -3,10 +3,15 @@ package com.zyouke.spring.conf;
 
 import com.mysql.jdbc.Driver;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
 
+@Component
 public class MysqlDataSource {
     @Bean
     public DataSource dataSource() {
@@ -17,4 +22,11 @@ public class MysqlDataSource {
         dataSource.setPassword("123456");
         return dataSource;
     }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate(){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
+        return jdbcTemplate;
+    }
+
 }
