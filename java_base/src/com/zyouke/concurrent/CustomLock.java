@@ -32,33 +32,27 @@ public class CustomLock extends AbstractQueuedSynchronizer implements Lock, Seri
         return false;
     }
 
-    @Override
-    public void lock() {
+    public void lock(){
 
     }
 
-    @Override
-    public void lockInterruptibly() throws InterruptedException {
+    public void lockInterruptibly() throws InterruptedException{
 
     }
 
-    @Override
-    public boolean tryLock() {
+    public boolean tryLock(){
         return false;
     }
 
-    @Override
-    public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
+    public boolean tryLock(long time, TimeUnit unit) throws InterruptedException{
         return false;
     }
 
-    @Override
-    public void unlock() {
+    public void unlock(){
 
     }
 
-    @Override
-    public Condition newCondition() {
+    public Condition newCondition(){
         return null;
     }
 }

@@ -1,7 +1,6 @@
 package com.zyouke.collection;
 
-import com.zyouke.utils.RandomUtil;
-
+import java.util.UUID;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -28,11 +27,10 @@ public class SynchronousQueueDemo {
      * @Date: 2018/1/18 15:24
      */
     static class ProducerRunnable implements Runnable{
-        @Override
         public void run() {
             String str = "";
             while (!str.equals("abcde")){
-                str = RandomUtil.getRandomString();
+                str = UUID.randomUUID().toString();
                 try {
                     System.out.println("生产者生产产品完毕,500毫秒后出厂");
                     TimeUnit.MILLISECONDS.sleep(500);
@@ -50,7 +48,6 @@ public class SynchronousQueueDemo {
      * @Date: 2018/1/18 15:24
      */
     static class CustomerRunnable implements Runnable{
-        @Override
         public void run() {
             long s = System.currentTimeMillis();
             while (true){

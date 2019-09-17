@@ -1,6 +1,5 @@
 package com.zyouke.sort;
 
-import com.zyouke.utils.RandomUtil;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -47,8 +46,8 @@ public class MergeFile {
             if (System.currentTimeMillis() % 500 == 0){
                 System.out.println(set.size());
             }
-            int randomNumber = RandomUtil.getRandomNumber(0, baseNum);
-            set.add(randomNumber);
+            //int randomNumber = RandomUtil.getRandomNumber(0, baseNum);
+            //set.add(randomNumber);
         }
         Iterator<Integer> iterator = set.iterator();
         int count = 1;
