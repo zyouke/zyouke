@@ -1,8 +1,8 @@
 package com.zyouke.dubbo.base.spi.animal;
 
 import com.alibaba.dubbo.common.URL;
-import org.apache.dubbo.common.extension.Adaptive;
-import org.apache.dubbo.common.extension.SPI;
+import com.alibaba.dubbo.common.extension.Adaptive;
+import com.alibaba.dubbo.common.extension.SPI;
 
 /**
  * @Author: zhoujun

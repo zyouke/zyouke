@@ -1,6 +1,6 @@
 package com.zyouke.dubbo.base.spi.job;
 
-import org.apache.dubbo.common.extension.SPI;
+import com.alibaba.dubbo.common.extension.SPI;
 
 /**
  * @Author: zhoujun
