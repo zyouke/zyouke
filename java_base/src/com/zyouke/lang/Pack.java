@@ -1,5 +1,6 @@
 package com.zyouke.lang;
 
+
 /**
  * @Author: zhoujun
  * {@link Integer}
@@ -7,7 +8,6 @@ package com.zyouke.lang;
  */
 public class Pack {
     public static void main(String[] args) {
-        Integer integer = Integer.valueOf(111);
-        System.out.println(integer);
+        System.out.println(Long.valueOf(10) == Long.valueOf(10));
     }
 }
