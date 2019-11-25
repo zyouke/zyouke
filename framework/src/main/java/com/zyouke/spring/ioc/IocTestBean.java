@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
  * @author zyouke
  * @create 2018/3/14 16:35
  */
-@Component
 public class IocTestBean {
     private String name;
 
